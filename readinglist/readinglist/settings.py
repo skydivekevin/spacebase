@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'booklist.apps.BooklistConfig',
+    'booklist',
+    # 'booklist.apps.BooklistConfig',
 
 
 ]
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'readinglist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

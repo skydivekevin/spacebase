@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Booklist</title>
+</head>
+<body>
+  <h1>You've made it!</h1>
+  <p>Welcome to the most awesomest collection of book titles.</p>
+  <p>Click on book title to add to your personal book list.</p>
+
+  <div class="books">
+    {% for book in books %}
+    <div class="book">
+      <h2><a href="">{{ book.title }}</a>, by {{ book.author }}</h2>
+    </div>
+
+    {% endfor %}
+  </div>
+  <div>
+    Don't see your book? Click <a href="#">here</a> to add it!
+  </div>
+  
+</body>
+</html>
