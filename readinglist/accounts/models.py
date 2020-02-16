@@ -1,3 +1,6 @@
 from django.db import models
+from booklist.models import Book
 
-# Create your models here.
+class User():
+  book = models.ManyToManyField(Book)
+
