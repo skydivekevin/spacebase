@@ -19,7 +19,6 @@ def userpage(request):
   context = {}
   username = request.user
   context['username'] = username
-  
   return render(request, 'accounts/userpage.html', context)
 
 def loginpage(request):
