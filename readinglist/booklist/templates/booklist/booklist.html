@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Booklist</title>
-</head>
-<body>
-  <h1>You've made it!</h1>
+{% extends 'base_layout.html' %}
+
+{% block content %}
+  <h1>{{username}}, here's the complete list of books.</h1>
   <p>Welcome to the most awesomest collection of book titles.</p>
   <p>Click on book title to add to your personal book list.</p>
 
@@ -20,8 +14,15 @@
     {% endfor %}
   </div>
   <div>
-    Don't see your book? Click <a href="#">here</a> to add it!
+    Don't see your book? Add it below!
   </div>
+  <form action="addbook/" method="POST">
+      {% csrf_token %}
+    <input type="text" value="title">
+    <input type="text" value="author">
+    <input type="number" value="rating" max="5" min="0">
+    <input type="submit" value="Add book">
+  </form>
+
+  {% endblock %}
   
-</body>
-</html>
