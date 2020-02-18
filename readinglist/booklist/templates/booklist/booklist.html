@@ -4,11 +4,17 @@
   <h1>{{username}}, here's the complete list of books.</h1>
   <p>Welcome to the most awesomest collection of book titles.</p>
   <p>Click on book title to add to your personal book list.</p>
+  <p>Go to your personal <a href="/accounts/userpage/">user</a> page</p>
 
   <div class="books">
     {% for book in books %}
     <div class="book">
-      <h2><a href="">{{ book.title }}</a>, by {{ book.author }}</h2>
+      <form action="/usersbooklist/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="bookid" value="{{book.id}}" >
+        <input type="hidden" name="userid" value="{{userid}}">
+      <h2>{{ book.title }}, by {{ book.author }}. <button type="Submit" value="adduserfavorite">Add to my list</button></h2>
+    </form>
     </div>
 
     {% endfor %}
@@ -16,19 +22,11 @@
   <div>
     Don't see your book? Add it below!
   </div>
-  <form action="POST">
+  <form action="/list/" method="POST">
   {% csrf_token %}
   {{ form.as_p}}
-  <button type="submit">Submit</button>
+  <button type="Submit" value="Addbook">Submit</button>
 </form>
-  <!-- <form action="addbook/" method="POST">
-      {% csrf_token %}
-      <label for="title">Book Title:</label>
-    <input type="text" value="title">
-    <label for="author">Author Name:</label>
-    <input type="text" value="author">
-    <input type="submit" value="addbook">
-  </form> -->
 
   {% endblock %}
   

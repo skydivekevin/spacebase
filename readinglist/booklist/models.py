@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 
@@ -10,11 +9,8 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
-# class Review(models.Model):
-#     rating = models.IntegerField()
-#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
-class userfavorite(models.Model):
+class Userfavorite(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   book = models.ForeignKey(Book, on_delete=models.CASCADE)
   rating = models.IntegerField(blank=True, null=True)

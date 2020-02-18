@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from booklist.models import Book, Userfavorite
 
 def signup_view(request):
   if request.method == 'POST':
@@ -18,7 +19,10 @@ def signup_view(request):
 def userpage(request):
   context = {}
   username = request.user
+  userid = request.user.id
   context['username'] = username
+  context['userid'] = userid
+  context['booklist'] = Userfavorite.objects.filter(user_id=userid)
   return render(request, 'accounts/userpage.html', context)
 
 def loginpage(request):

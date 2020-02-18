@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Book, userfavorite
+from .models import Book, Userfavorite
 
-# admin.site.register(Booklist)
 admin.site.register(Book)
-admin.site.register(userfavorite)
-# admin.site.register(Review)
+admin.site.register(Userfavorite)

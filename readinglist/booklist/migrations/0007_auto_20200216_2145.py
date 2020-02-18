@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='user',
         ),
         migrations.AddField(
-            model_name='userfavorite',
+            model_name='Userfavorite',
             name='rating',
             field=models.IntegerField(blank=True, null=True),
         ),
