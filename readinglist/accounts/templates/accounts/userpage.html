@@ -1,12 +1,12 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-  <h1>Welcome to your user page {{username}}</h1>
+  <h1>Welcome to your user page, {{ username }}</h1>
 
   <div>Here is your reading list: 
     {% for book in booklist %}
     <div class="book">
-      <h2>{{ book.book.title }}, by {{ book.book.author }}. Current Rating: {{book.rating}} 
+      <h2>{{ book.book.title }}, by {{ book.book.author }}. Current Rating: {{ book.rating }} 
         <form action="userrating/" method="POST">
         {% csrf_token %}
         Add/Update rating: <input type="number" max="5" min="1" required=True name="rating">

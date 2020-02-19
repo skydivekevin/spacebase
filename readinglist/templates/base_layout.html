@@ -13,19 +13,22 @@
   <nav>
     <ul>
       <li>
-        <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
-          {% csrf_token %}
-          <button type="submit">Logout</button>
-        </form>
+          <button> <a href="/accounts/userpage/">User page</a></button>
       </li>
       <li>
-          <button> <a href="/accounts/userpage/">user page</a></button>
-      </li>
-      <li> 
-        <button><a href="/accounts/login/">Login</a></button>
+          <button><a href="/">Home</a></button>
       </li>
       <li>
         <button><a href="/accounts/signup/">Signup</a></button>
+      </li>
+      <li> 
+          <button><a href="/accounts/login/">Login</a></button>
+      </li>
+      <li>
+        <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
       </li>
     </ul>
   </nav>

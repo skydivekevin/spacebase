@@ -3,15 +3,22 @@
 {% block content %}
   <h1>Booklist app</h1>
   <p>The greatest of all booklist apps.</p> 
+  
   <div id="analytics">
       <div id="popular">
-        {% for book in popular%}
-          <p>{{book.book}}</p>
+        <h3>Top 5 most popular books</h3>
+        {% for book in topbooks %}
+          <p>{{ book.title }}</p>
         {% endfor %}
-
       </div>
-      {% for book in books %}
-        <h3>{{ book }}</h3>
+      <div id="highlyrated">
+        <h3>Top 5 most highly rated books</h3>
+      </div>
+
+      {% for book in highestrated %}
+        <p>{{ book }}</p>
       {% endfor %}
+
+
     </div>
 {% endblock %}
