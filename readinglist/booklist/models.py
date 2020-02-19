@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-
 class Book(models.Model):
     title = models.CharField(max_length=40, null=False, default="untitled")
     author = models.CharField(max_length=40, default="no author listed")

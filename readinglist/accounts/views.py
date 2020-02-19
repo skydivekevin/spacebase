@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from booklist.models import Book, Userfavorite
+from django.http import HttpResponse
 
 def signup_view(request):
   if request.method == 'POST':
@@ -22,7 +23,12 @@ def userpage(request):
   userid = request.user.id
   context['username'] = username
   context['userid'] = userid
-  context['booklist'] = Userfavorite.objects.filter(user_id=userid)
+  booklist = []
+
+  for book in Userfavorite.objects.filter(user_id=userid):
+    booklist.append(book)
+  context['booklist'] = booklist
+
   return render(request, 'accounts/userpage.html', context)
 
 def loginpage(request):
@@ -40,5 +46,16 @@ def logoutpage(request):
   if request.method == 'POST':
     logout(request)
     return redirect('accounts:login')
+
+def userrating(request):
+  if request.method == 'POST':
+    rating = request.POST.get('rating')
+    objid = request.POST.get('favoriteid')
+    book = Userfavorite.objects.filter(id=objid)[0]
+    book.rating = rating
+    book.save()
+    return redirect('accounts:userpage')
+
+    
 
 

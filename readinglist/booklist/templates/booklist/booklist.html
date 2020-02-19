@@ -9,11 +9,11 @@
   <div class="books">
     {% for book in books %}
     <div class="book">
-      <form action="/usersbooklist/" method="POST">
+      <form action="/list/userlist/" method="POST">
         {% csrf_token %}
         <input type="hidden" name="bookid" value="{{book.id}}" >
         <input type="hidden" name="userid" value="{{userid}}">
-      <h2>{{ book.title }}, by {{ book.author }}. <button type="Submit" value="adduserfavorite">Add to my list</button></h2>
+      <h2>{{ book.title }}, by {{ book.author }}. <button type="Submit">Add to my list</button></h2>
     </form>
     </div>
 

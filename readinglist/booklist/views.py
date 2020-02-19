@@ -1,23 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Book, Userfavorite
 from booklist.forms import Addbook, Adduserbook
+from booklist.forms import Adduserbook
 
 
 def booklist(request):
     if request.method == 'GET':
-      print('booklist get')
-      context = {}
-      context['username'] = request.user
-      context['books'] = Book.objects.all().order_by('title')
-      context['userid'] = request.user.id
-      form = Addbook()
-      addbookform = Adduserbook()
-      addbookform.userid = request.user
-      context['form'] = form
-      context['addbookform'] = addbookform
-      return render(request, 'booklist/booklist.html', context)
+        context = {}
+        context['username'] = request.user
+        context['books'] = Book.objects.all().order_by('title')
+        context['userid'] = request.user.id
+        form = Addbook()
+        addbookform = Adduserbook()
+        addbookform.userid = request.user
+        context['form'] = form
+        context['addbookform'] = addbookform
+        return render(request, 'booklist/booklist.html', context)
     if request.method == 'POST':
-        print('booklist post')
         form = Addbook(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
@@ -27,16 +26,19 @@ def booklist(request):
             return redirect('/list/')
     return redirect('/list/')
 
-def usersbooklist(request):
-    print('userbooklist')
+def userlist(request):
     if request.method == 'POST':
-      userid = request.userid
-      bookid = request.bookid
-      print(userid)
-      print(bookid)
-      entry = Userfavorite(user=userid, book=bookid,)
-      entry.save()
-    return redirect('/accounts/userpage/')
+        form = Adduserbook(data=request.POST)
+        if form.is_valid():
+            userid = form.cleaned_data['userid']
+            bookid = form.cleaned_data['bookid']
+            entry = Userfavorite(user_id=userid, book_id=bookid,)
+            entry.save()
+            return redirect('/accounts/userpage/')
+
+
+
+
 
 
 

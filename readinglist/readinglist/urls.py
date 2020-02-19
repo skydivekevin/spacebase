@@ -24,9 +24,6 @@ urlpatterns = [
     path('', views.index),
     path('list/', include('booklist.urls')),
     path('accounts/', include('accounts.urls')),
-    path('usersbooklist/', include('booklist.urls')),
-
-
 ]
 
 urlpatterns += staticfiles_urlpatterns()

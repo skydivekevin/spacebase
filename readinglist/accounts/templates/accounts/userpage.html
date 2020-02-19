@@ -4,14 +4,18 @@
   <h1>Welcome to your user page {{username}}</h1>
 
   <div>Here is your reading list: 
-    {% for book in books %}
+    {% for book in booklist %}
     <div class="book">
-      <h2>{{ book.title }}, by {{ book.author }}. Rating: </h2>
+      <h2>{{ book.book.title }}, by {{ book.book.author }}. Current Rating: {{book.rating}} 
+        <form action="userrating/" method="POST">
+        {% csrf_token %}
+        Add/Update rating: <input type="number" max="5" min="1" required=True name="rating">
+        <input type="hidden" name="favoriteid" value="{{book.id}}">
+        <button type="submit">Submit</button></form></h2>
     </div>
 
     {% endfor %}
     <h3>Want to add another book? Visit the <a href="/list/">List</a> page to view the entire book collection.</h3>
-    <h3>your user id is: {{userid}}</h3>
   </div>
   
 {% endblock %}
