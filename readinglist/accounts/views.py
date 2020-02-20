@@ -3,17 +3,19 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from booklist.models import Userfavorite
-from booklist.forms import Deletebook
+from booklist.forms import Deletebook, UserCreationFormEmail
+
 
 def signup_view(request):
+    form = UserCreationFormEmail()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreationFormEmail(request.POST)
     if form.is_valid():
         user = form.save()
-        login(request, user)  
+        login(request, user) 
         return redirect('accounts:userpage')
     else:
-        form = UserCreationForm()
+        form = UserCreationFormEmail()
         return render(request, 'accounts/signup.html', {'form':form})
 
 @login_required()
