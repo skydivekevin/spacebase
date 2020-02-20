@@ -7,3 +7,6 @@ class Addbook(forms.Form):
 class Adduserbook(forms.Form):
     userid = forms.IntegerField(widget=forms.HiddenInput())
     bookid = forms.IntegerField(widget=forms.HiddenInput())
+
+class Deletebook(forms.Form):
+    userfaveid = forms.IntegerField(widget=forms.HiddenInput())

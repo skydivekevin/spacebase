@@ -10,10 +10,21 @@
         <form action="userrating/" method="POST">
         {% csrf_token %}
         Add/Update rating: <input type="number" max="5" min="1" required=True name="rating">
-        <input type="hidden" name="favoriteid" value="{{book.id}}">
-        <button type="submit">Submit</button></form></h2>
-    </div>
+        <input type="hidden" name="favoriteid" value="{{ book.id }}">
+        <button type="submit">Submit</button>
+      </form>
+      </h2>
 
+        <form action="deleteuserfavorite/" method="POST">
+            {% csrf_token %}
+        <h2>
+          <input type="hidden" name="userfavoriteid" value="{{ book.id }}">
+        </h2>
+        <button type="submit">Delete book</button>
+      </form>
+
+    </div>
+      
     {% endfor %}
     <h3>Want to add another book? Visit the <a href="/list/">List</a> page to view the entire book collection.</h3>
   </div>

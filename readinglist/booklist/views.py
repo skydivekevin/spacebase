@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Book, Userfavorite
-from booklist.forms import Addbook, Adduserbook
-from booklist.forms import Adduserbook
+from booklist.forms import Addbook, Adduserbook, Deletebook
 
 
 def booklist(request):
@@ -15,6 +14,7 @@ def booklist(request):
         addbookform.userid = request.user
         context['form'] = form
         context['addbookform'] = addbookform
+        context['deletebookform'] = Deletebook
         return render(request, 'booklist/booklist.html', context)
     if request.method == 'POST':
         form = Addbook(request.POST)

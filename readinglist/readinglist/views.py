@@ -17,6 +17,9 @@ def index(request):
     
     highestrated = Book.objects.annotate(rating_average=Avg('favorite__rating')).order_by('-rating_average')[:5]
     context['highestrated'] = highestrated
+
+    dateadded = Book.objects.values('title').annotate(count=Count('created')).order_by('-count')[:5]
+    context['dateadded'] = dateadded
     return render(request, 'homepage.html', context)
 
 

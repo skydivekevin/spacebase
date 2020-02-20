@@ -1,7 +1,9 @@
 from django.db import models
 from django.conf import settings
+from datetime import date, time
 
 class Book(models.Model):
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     title = models.CharField(max_length=40, null=False, default="untitled")
     author = models.CharField(max_length=40, default="no author listed")
 

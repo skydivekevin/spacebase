@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from booklist.models import Userfavorite
+from booklist.forms import Deletebook
 
 def signup_view(request):
     if request.method == 'POST':
@@ -22,6 +23,7 @@ def userpage(request):
     userid = request.user.id
     context['username'] = username
     context['userid'] = userid
+    context['deletebookform'] = Deletebook
     booklist = []
 
     for book in Userfavorite.objects.filter(user_id=userid):
@@ -54,6 +56,15 @@ def userrating(request):
         book.rating = rating
         book.save()
         return redirect('accounts:userpage')
+
+def deleteuserfavorite(request):
+    if request.method == 'POST':
+        rowid = request.POST.get('userfavoriteid')
+        print("rowid is: ", rowid)
+        record = Userfavorite.objects.get(id=rowid)
+        record.delete()
+        return redirect('accounts:userpage')
+
 
     
 

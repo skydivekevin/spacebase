@@ -11,7 +11,7 @@
     <div class="book">
       <form action="/list/userlist/" method="POST">
         {% csrf_token %}
-        <input type="hidden" name="bookid" value="{{book.id}}" >
+        <input type="hidden" name="bookid" value="{{book.id}}">
         <input type="hidden" name="userid" value="{{userid}}">
       <h2>{{ book.title }}, by {{ book.author }}. <button type="Submit">Add to my list</button></h2>
     </form>

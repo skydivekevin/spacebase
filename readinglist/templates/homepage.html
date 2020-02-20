@@ -3,8 +3,15 @@
 {% block content %}
   <h1>Booklist app</h1>
   <p>The greatest of all booklist apps.</p> 
-  
+
   <div id="analytics">
+      <div id="recently_added">
+        <h3>5 most recently added books</h3>
+        {% for book in dateadded %}
+          <p>{{ book.title }}</p>
+        {% endfor %}
+
+      </div>
       <div id="popular">
         <h3>Top 5 most popular books</h3>
         {% for book in topbooks %}
