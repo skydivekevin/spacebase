@@ -13,10 +13,10 @@ def signup_view(request):
     if form.is_valid():
         user = form.save()
         login(request, user) 
-        return redirect('accounts:userpage')
+        return redirect('account:userpage')
     else:
         form = UserCreationFormEmail()
-        return render(request, 'accounts/signup.html', {'form':form})
+        return render(request, 'account/signup.html', {'form':form})
 
 @login_required()
 def userpage(request):
@@ -32,7 +32,7 @@ def userpage(request):
         booklist.append(book)
         context['booklist'] = booklist
 
-    return render(request, 'accounts/userpage.html', context)
+    return render(request, 'account/userpage.html', context)
 
 def loginpage(request):
     if request.method == 'POST':
@@ -40,15 +40,15 @@ def loginpage(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-        return redirect('accounts:userpage')
+        return redirect('account:userpage')
     else:
         form = AuthenticationForm()
-    return render(request, 'accounts/loginpage.html', {'form':form})
+    return render(request, 'account/loginpage.html', {'form':form})
 
 def logoutpage(request):
     if request.method == 'POST':
         logout(request)
-    return redirect('accounts:login')
+    return redirect('account:login')
 
 def userrating(request):
     if request.method == 'POST':
@@ -57,7 +57,7 @@ def userrating(request):
         book = Userfavorite.objects.filter(id=objid)[0]
         book.rating = rating
         book.save()
-        return redirect('accounts:userpage')
+        return redirect('account:userpage')
 
 def deleteuserfavorite(request):
     if request.method == 'POST':
@@ -65,7 +65,7 @@ def deleteuserfavorite(request):
         print("rowid is: ", rowid)
         record = Userfavorite.objects.get(id=rowid)
         record.delete()
-        return redirect('accounts:userpage')
+        return redirect('account:userpage')
 
 
     
