@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Book, Userfavorite
 from booklist.forms import Addbook, Adduserbook, Deletebook
+import csv, io
 
 
 def booklist(request):
@@ -35,6 +36,21 @@ def userlist(request):
             entry = Userfavorite(user_id=userid, book_id=bookid,)
             entry.save()
             return redirect('/accounts/userpage/')
+
+# def list_download(request):
+#     print('asfafakfjhdalkdfjshalkdfsjhalksfhdklasjhflaksjhdf')
+#     userid = request.user.id
+#     items = Userfavorite.objects.filter(user_id=userid)
+#     response = HttpResponse(content_type='text/csv')
+#     response['Content-Disposition'] = 'attachment; filename="booklist.csv"'
+#     writer = csv.writer(response, delimiter=',')
+#     writer.writerow(['book', 'rating', 'tracking'])
+
+#     for item in items:
+#         writer.writerow([item.book, item.rating, item.tracking])
+#     return response
+    
+
 
 
 

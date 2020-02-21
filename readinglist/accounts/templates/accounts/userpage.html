@@ -3,12 +3,12 @@
 {% block content %}
   <h1>Welcome to your user page, {{ username }}</h1>
 
-  <div>Here is your reading list: 
+  <h2> Here is your personal reading list. </h2>
     {% for book in booklist %}
     <div class="book">
-      <h2>{{ book.book.title }}, by {{ book.book.author }}. 
-        Tracking ID: {{ book.tracking}} 
-        Current Rating: {{ book.rating }}
+      <h2>{{ book.book.title }}, by {{ book.book.author }}.</h2>
+        <h3> ID: {{ book.tracking}} </h3>
+        <h3>Current Rating: {{ book.rating }} </h3>
         <form action="userrating/" method="POST">
         {% csrf_token %}
         Add/Update rating: <input type="number" max="5" min="1" required=True name="rating">
@@ -17,7 +17,6 @@
 
         <button type="submit">Submit</button>
       </form>
-      </h2>
 
         <form action="deleteuserfavorite/" method="POST">
             {% csrf_token %}
@@ -27,10 +26,10 @@
         <button type="submit">Delete book</button>
       </form>
 
-    </div>
       
     {% endfor %}
     <h3>Want to add another book? Visit the <a href="/list/">List</a> page to view the entire book collection.</h3>
+    <h3>Need to download your userlist with custom tracking ID's? Click <a href="/list_download/">Here</a> to download a CSV file.</h3>
   </div>
   
 {% endblock %}

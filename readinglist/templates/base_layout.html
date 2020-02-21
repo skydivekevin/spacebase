@@ -10,19 +10,19 @@
   <title>Document</title>
 </head>
 <body>
-  <nav>
+  <nav class="nav">
     <ul>
       <li>
-          <button> <a href="/accounts/userpage/">User page</a></button>
+          <a href="/accounts/userpage/">User page</a>
       </li>
       <li>
-          <button><a href="/">Home</a></button>
+          <a href="/">Home</a>
       </li>
       <li>
-        <button><a href="/accounts/signup/">Signup</a></button>
+          <a href="/accounts/signup/">Signup</a>
       </li>
       <li> 
-          <button><a href="/accounts/login/">Login</a></button>
+          <a href="/accounts/login/">Login</a>
       </li>
       <li>
         <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
