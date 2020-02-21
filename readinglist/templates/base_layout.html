@@ -13,19 +13,19 @@
   <nav>
     <ul>
       <li>
-          <button> <a href="/account/userpage/">User page</a></button>
+          <button> <a href="/accounts/userpage/">User page</a></button>
       </li>
       <li>
           <button><a href="/">Home</a></button>
       </li>
       <li>
-        <button><a href="/account/signup/">Signup</a></button>
+        <button><a href="/accounts/signup/">Signup</a></button>
       </li>
       <li> 
-          <button><a href="/account/login/">Login</a></button>
+          <button><a href="/accounts/login/">Login</a></button>
       </li>
       <li>
-        <form class="logout-link" action="{% url 'account:logout' %}" method="POST" id="logout">
+        <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
           {% csrf_token %}
           <button type="submit">Logout</button>
         </form>

@@ -34,7 +34,7 @@ def userlist(request):
             bookid = form.cleaned_data['bookid']
             entry = Userfavorite(user_id=userid, book_id=bookid,)
             entry.save()
-            return redirect('/account/userpage/')
+            return redirect('/accounts/userpage/')
 
 
 
