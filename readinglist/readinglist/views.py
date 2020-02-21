@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from booklist.models import Book, Userfavorite
+import csv, datetime
+from django.shortcuts import render, HttpResponse
 from django.db.models import Count, Avg
-from django.shortcuts import render, redirect, HttpResponse
-import csv, io
+from booklist.models import Book, Userfavorite
 
 
 def index(request):
@@ -25,11 +24,11 @@ def index(request):
     return render(request, 'homepage.html', context)
 
 def list_download(request):
-    print('asfafakfjhdalkdfjshalkdfsjhalksfhdklasjhflaksjhdf')
+    now = datetime.datetime.now()
     userid = request.user.id
     items = Userfavorite.objects.filter(user_id=userid)
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="booklist.csv"'
+    response['Content-Disposition'] = 'attachment; filename="booklist {}.csv"'.format(str(now))
     writer = csv.writer(response, delimiter=',')
     writer.writerow(['book title', 'rating', 'tracking ids'])
 
