@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from datetime import date, time
 
 class Book(models.Model):
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)

@@ -5,7 +5,6 @@ app_name = 'booklist'
 
 
 urlpatterns = [
-    path('', views.booklist),
     path('list/', views.booklist, name='list'),
     path('userlist/', views.userlist, name='usersbooklist'),
 ]
