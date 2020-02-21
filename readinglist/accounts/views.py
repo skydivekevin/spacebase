@@ -54,8 +54,10 @@ def userrating(request):
     if request.method == 'POST':
         rating = request.POST.get('rating')
         objid = request.POST.get('favoriteid')
+        tracking = request.POST.get('tracking')
         book = Userfavorite.objects.filter(id=objid)[0]
         book.rating = rating
+        book.tracking = tracking
         book.save()
         return redirect('accounts:userpage')
 

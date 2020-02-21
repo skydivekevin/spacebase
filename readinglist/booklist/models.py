@@ -14,6 +14,8 @@ class Userfavorite(models.Model):
       user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
       book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="favorite")
       rating = models.IntegerField(blank=True, null=True)
+      tracking = models.CharField(max_length=30, default="N/A")
+
 
 
 

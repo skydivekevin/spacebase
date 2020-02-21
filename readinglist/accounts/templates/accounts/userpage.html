@@ -6,11 +6,15 @@
   <div>Here is your reading list: 
     {% for book in booklist %}
     <div class="book">
-      <h2>{{ book.book.title }}, by {{ book.book.author }}. Current Rating: {{ book.rating }} 
+      <h2>{{ book.book.title }}, by {{ book.book.author }}. 
+        Tracking ID: {{ book.tracking}} 
+        Current Rating: {{ book.rating }}
         <form action="userrating/" method="POST">
         {% csrf_token %}
         Add/Update rating: <input type="number" max="5" min="1" required=True name="rating">
         <input type="hidden" name="favoriteid" value="{{ book.id }}">
+        Add Tracking ID (optional): <input type="text" name="tracking">
+
         <button type="submit">Submit</button>
       </form>
       </h2>
