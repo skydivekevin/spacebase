@@ -37,8 +37,8 @@
               {% endfor %}
             </tbody>
           </table>
-    <h3>Want to add another book? Visit the <a href="/list/list/">List</a> page to view the entire book collection.</h3>
-    <h3>Need to download your userlist with custom tracking ID's? Click <a href="/list_download/">Here</a> to download a CSV file.</h3>
+    <h3>Want to add another book? Visit the <a href="{% url 'booklist:booklist-list' %}">List</a> page to view the entire book collection.</h3>
+    <h3>Need to download your userlist with custom tracking ID's? Click <a href="{% url 'list_download' %}">Here</a> to download a CSV file.</h3>
   </div>
 </div>
   

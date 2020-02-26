@@ -4,7 +4,7 @@
 <div class="page-content">
   <h1>{{username}}, here's the complete list of books.</h1>
   <p>Welcome to the most awesomest collection of book titles.</p>
-  <p>Go to your personal <a href="/accounts/userpage/">user</a> page</p>
+  <p>Go to your personal <a href="{% url 'accounts:userpage' %}">user</a> page</p>
 
   <div class="page-content">
   <table class="table">
@@ -21,7 +21,7 @@
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>
-                <form action="/list/userlist/" method="POST">
+                <form action="{% url 'booklist:usersbooklist' %}" method="POST">
                   {% csrf_token %}
                   <input type="hidden" name="bookid" value="{{book.id}}">
                   <input type="hidden" name="userid" value="{{userid}}">
