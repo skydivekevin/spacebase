@@ -5,8 +5,40 @@
   <h1>Welcome to your user page, {{ username }}</h1>
 
   <h2> Here is your personal reading list. </h2>
+  <div class="book">
+
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Tracking ID</th>
+              <th scope="col">Submit</th>
+            </tr>
+          </thead>
+          <tbody>
     {% for book in booklist %}
-    <div class="book">
+              <tr>
+                <td>{{ book.book.title }}</td>
+                <td>{{ book.book.author }}</td>
+                <td>
+                  <form action="userrating/" method="POST">
+                  {% csrf_token %}
+                  <input type="number" max="5" min="1" required=True name="rating" value="{{book.rating}}">
+                
+                </td>
+                <td><input type="hidden" name="favoriteid" value="{{ book.id }}">
+                  Add Tracking ID (optional): <input type="text" name="tracking" value="{{book.tracking}}"></td>
+                <td>        <button type="submit">Submit</button>
+                </form></td>
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+
+<!-- 
       <h2>{{ book.book.title }}, by {{ book.book.author }}.</h2>
         <h3> ID: {{ book.tracking}} </h3>
         <h3>Current Rating: {{ book.rating }} </h3>
@@ -25,10 +57,10 @@
           <input type="hidden" name="userfavoriteid" value="{{ book.id }}">
         </h2>
         <button type="submit">Delete book</button>
-      </form>
+      </form> -->
 
       
-    {% endfor %}
+
     <h3>Want to add another book? Visit the <a href="/list/list/">List</a> page to view the entire book collection.</h3>
     <h3>Need to download your userlist with custom tracking ID's? Click <a href="/list_download/">Here</a> to download a CSV file.</h3>
   </div>
