@@ -5,6 +5,8 @@ class Book(models.Model):
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     title = models.CharField(max_length=40, null=False, default="untitled")
     author = models.CharField(max_length=40, default="no author listed")
+    class Meta:
+        unique_together = ('title', 'author',)
 
     def __str__(self):
         return self.title
