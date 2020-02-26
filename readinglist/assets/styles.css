@@ -1,4 +1,12 @@
 body {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+
+
+
+/* body {
   background: lightgray;
 }
 
@@ -29,4 +37,4 @@ nav ul {
 
 .nav a:hover {
   background-color: #005f5f;
-}
+} */
