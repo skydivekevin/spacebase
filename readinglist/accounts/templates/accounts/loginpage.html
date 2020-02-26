@@ -1,6 +1,7 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
+<div class="page-content">
   <h1>Login</h1>
   <form class="site-form" action="/accounts/login/" method="POST">
     {% csrf_token %}
@@ -10,5 +11,6 @@
 
   <div>
     <p>Forgot your password? Click <a href="/accounts/password_reset/">here</a> to reset it.</p>
+  </div>
   </div>
 {% endblock %}

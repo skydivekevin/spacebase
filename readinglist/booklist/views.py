@@ -24,8 +24,8 @@ def booklist(request):
             author = form.cleaned_data['author']
             newbook = Book(title=title, author=author)
             newbook.save()
-            return redirect('/list/')
-    return redirect('/list/')
+            return redirect( 'booklist:booklist-list')
+    return redirect('booklist:booklist-list')
 
 def userlist(request):
     if request.method == 'POST':

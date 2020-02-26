@@ -1,6 +1,7 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
+<div class="page-content">
   <h1>{{username}}, here's the complete list of books.</h1>
   <p>Welcome to the most awesomest collection of book titles.</p>
   <p>Click on book title to add to your personal book list.</p>
@@ -22,11 +23,12 @@
   <div>
     Don't see your book? Add it below!
   </div>
-  <form action="/list/" method="POST">
+  <form action="{% url 'booklist:booklist-list' %}" method="POST">
   {% csrf_token %}
   {{ form.as_p}}
   <button type="Submit" value="Addbook">Submit</button>
 </form>
+</div>
 
   {% endblock %}
   

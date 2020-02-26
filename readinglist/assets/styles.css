@@ -1,8 +1,15 @@
 body {
+
+}
+
+nav {
+  margin-bottom: 50px;
+}
+
+.page-content {
   padding-left: 5%;
   padding-right: 5%;
 }
-
 
 
 
