@@ -11,6 +11,19 @@ nav {
   padding-right: 5%;
 }
 
+.page-content button {
+  background-color: #2176FF;
+  color: white;
+  border-radius: 10px;
+  size: 5px;
+}
+
+.analytics {
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 
 
 /* body {

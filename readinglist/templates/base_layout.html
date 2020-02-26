@@ -13,30 +13,26 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Spacebase Readlinglist App</a>
+        <a class="navbar-brand" href="/">Spacebase Readlinglist App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/accounts/userpage/">User page</a>
+                <a class="nav-link" href="{% url 'accounts:userpage' %}">User page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/accounts/signup/">Signup</a>
+              <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/accounts/login/">Login</a>
+              <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-            <li>
+            <li id="logout">
               <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
                   {% csrf_token %}
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-              </form>
-                
+              </form>      
             </li>
           </ul>
         </div>
