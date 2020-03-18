@@ -4,6 +4,7 @@
 <div class="page-content">
   <h1>Welcome to your user page, {{ username }}</h1>
   <h2> Here is your personal reading list. </h2>
+<<<<<<< HEAD
   {% for book in booklist %}
   <div class="book">
     <h2>{{ book.book.title }}, by {{ book.book.author }}.</h2>
@@ -26,6 +27,42 @@
     {% endfor %}
     <h3>Want to add another book? Visit the <a href="{% url 'booklist:booklist-list' %}">List</a> page to view the entire book collection.</h3>
     <h3>Need to download your userlist with custom tracking ID's? Click <a href="{% url 'readinglist:list-download' %}">Here</a> to download a CSV file.</h3>
+=======
+  <div class="book">
+
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Tracking ID</th>
+              <th scope="col">Submit</th>
+            </tr>
+          </thead>
+          <tbody>
+    {% for book in booklist %}
+              <tr>
+                <td>{{ book.book.title }}</td>
+                <td>{{ book.book.author }}</td>
+                <td>
+                  <form action="{% url 'accounts:userrating' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="number" max="5" min="1" required=True name="rating" value="{{book.rating}}">             
+                </td>
+                <td><input type="hidden" name="favoriteid" value="{{ book.id }}">
+                  Add Tracking ID (optional): <input type="text" name="tracking" value="{{book.tracking}}"></td>
+                <td>
+                  <button type="submit">Submit</button>
+                </form>
+              </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    <h3>Want to add another book? Visit the <a href="{% url 'booklist:booklist-list' %}">List</a> page to view the entire book collection.</h3>
+    <h3>Need to download your userlist with custom tracking ID's? Click <a href="{% url 'list_download' %}">Here</a> to download a CSV file.</h3>
+>>>>>>> 5006865f81a2ed7d4584d527ff0ab7791cc414cb
   </div>
 </div>
   

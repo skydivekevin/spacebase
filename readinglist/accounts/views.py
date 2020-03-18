@@ -53,7 +53,8 @@ def userrating(request):
         rating = request.POST.get('rating')
         objid = request.POST.get('favoriteid')
         tracking = request.POST.get('tracking')
-        book = Userfavorite.objects.filter(id=objid)[0]
+        user = request.user
+        book = Userfavorite.objects.filter(user=user).filter(id=objid)[0]
         book.rating = rating
         book.tracking = tracking
         book.save()
