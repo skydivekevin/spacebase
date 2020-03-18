@@ -3,34 +3,29 @@
 {% block content %}
 <div class="page-content">
   <h1>Welcome to your user page, {{ username }}</h1>
-
   <h2> Here is your personal reading list. </h2>
-    {% for book in booklist %}
-    <div class="book">
-      <h2>{{ book.book.title }}, by {{ book.book.author }}.</h2>
-        <h3> ID: {{ book.tracking}} </h3>
-        <h3>Current Rating: {{ book.rating }} </h3>
-        <form action="userrating/" method="POST">
+  {% for book in booklist %}
+  <div class="book">
+    <h2>{{ book.book.title }}, by {{ book.book.author }}.</h2>
+      <h3> Tracking ID: {{ book.tracking}} </h3>
+      <h3>Current Rating: {{ book.rating }} </h3>
+      <form action="userrating/" method="POST">
         {% csrf_token %}
         Add/Update rating: <input type="number" max="5" min="1" required=True name="rating">
         <input type="hidden" name="favoriteid" value="{{ book.id }}">
         Add Tracking ID (optional): <input type="text" name="tracking">
-
         <button type="submit">Submit</button>
       </form>
-
-        <form action="deleteuserfavorite/" method="POST">
-            {% csrf_token %}
+      <form action="deleteuserfavorite/" method="POST">
+        {% csrf_token %}
         <h2>
-          <input type="hidden" name="userfavoriteid" value="{{ book.id }}">
+        <input type="hidden" name="userfavoriteid" value="{{ book.id }}">
         </h2>
         <button type="submit">Delete book</button>
       </form>
-
-      
     {% endfor %}
-    <h3>Want to add another book? Visit the <a href="/list/list/">List</a> page to view the entire book collection.</h3>
-    <h3>Need to download your userlist with custom tracking ID's? Click <a href="/list_download/">Here</a> to download a CSV file.</h3>
+    <h3>Want to add another book? Visit the <a href="{% url 'booklist:booklist-list' %}">List</a> page to view the entire book collection.</h3>
+    <h3>Need to download your userlist with custom tracking ID's? Click <a href="{% url 'readinglist:list-download' %}">Here</a> to download a CSV file.</h3>
   </div>
 </div>
   

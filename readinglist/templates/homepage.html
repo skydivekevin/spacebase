@@ -2,38 +2,35 @@
 
 {% block content %}
   <div class="page-content" >
-  <h1>Booklist app</h1>
-  <p>The greatest of all booklist apps.</p> 
-
-
-  <div class="container">
-      <div class="row">
-        <div class="col-sm">
+    <h1>Booklist app</h1>
+    <p>The greatest of all booklist apps.</p> 
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
             <div class="analytics" id="recently_added">
-                <h3>5 most recently added books</h3>
-                {% for book in dateadded %}
-                  <p>{{ book.title }}</p>
-                {% endfor %}
-              </div>
-        </div>
-        <div class="col-sm">
-            <div class="analytics" id="popular">
-                <h3>Top 5 most popular books</h3>
-                {% for book in topbooks %}
-                  <p>{{ book.title }}</p>
-                {% endfor %}
-              </div>
-        </div>
-        <div class="col-sm">
-            <div class="analytics" id="highlyrated">
-                <h3>Top 5 most highly rated books</h3>      
-                {% for book in highestrated %}
-                  <p>{{ book }}</p>
-                {% endfor %}
+              <h3>5 most recently added books</h3>
+              {% for book in dateadded %}
+              <p>{{ book.title }}</p>
+              {% endfor %}
             </div>
+          </div>
+          <div class="col-sm">
+            <div class="analytics" id="popular">
+              <h3>Top 5 most popular books</h3>
+              {% for book in topbooks %}
+              <p>{{ book.title }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="analytics" id="highlyrated">
+              <h3>Top 5 most highly rated books</h3>      
+              {% for book in highestrated %}
+              <p>{{ book }}</p>
+              {% endfor %}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
 {% endblock %}
 

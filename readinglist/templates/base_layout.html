@@ -11,57 +11,31 @@
   <title>Document</title>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Spacebase Readlinglist App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'accounts:userpage' %}">User page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-            </li>
-            <li id="logout">
-              <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
-                  {% csrf_token %}
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-              </form>      
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-
-  <!-- <nav class="nav">
-    <ul>
-      <li>
-          <a href="/accounts/userpage/">User page</a>
-      </li>
-      <li>
-          <a href="/">Home</a>
-      </li>
-      <li>
-          <a href="/accounts/signup/">Signup</a>
-      </li>
-      <li> 
-          <a href="/accounts/login/">Login</a>
-      </li>
-      <li>
-        <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
-          {% csrf_token %}
-          <button type="submit">Logout</button>
-        </form>
-      </li>
-    </ul>
-  </nav> -->
-
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Spacebase Readlinglist App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'accounts:userpage' %}">User page</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+        </li>
+        <li id="logout">
+          <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST" id="logout">
+            {% csrf_token %}
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+          </form>      
+        </li>
+      </ul>
+    </div>
+  </nav>
   <div class="wrapper">
     {% block content %}
     {% endblock %}
